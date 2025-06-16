@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EarthWhisper - Irrigation Consultant & Blog</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <style>
+    /* CSS Variables for theme */
+    :root {
+      --color-primary: #007a4d;
+      --color-primary-light: #00a258;
+      --color-secondary: #005533;
+      --color-accent: #00d466;
+      --color-background: #f8faf7;
+      --color-text-primary: #1f2937;
+      --color-text-secondary: #4b5563;
+      --color-card-bg: #ffffff;
+      --color-border: #d1d5db;
+      --border-radius: 12px;
+      --shadow-light: 0 4px 10px rgba(0, 122, 77, 0.1);
+      --shadow-hover: 0 8px 20px rgba(0, 122, 77, 0.15);
+      --max-width: 1200px;
+      --spacing-base: 16px;
+      --font-family: 'Inter', sans-serif;
+    }
+    /* Reset & base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: var(--font-family);
+      background: var(--color-background);
+      color: var(--color-text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    a {
+      color: var(--color-primary);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover,
+    a:focus {
+      color: var(--color-primary-light);
+      outline: none;
+    }
+    h1, h2, h3, h4, h5 {
+      color: var(--color-text-primary);
+      margin-bottom: 0.5em;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    h1 {
+      font-size: 3rem;
+    }
+    h2 {
+      font-size: 2.25rem;
+    }
+    h3 {
+      font-size: 1.75rem;
+    }
+    p {
+      color: var(--color-text-secondary);
+      margin-top: 0;
+      margin-bottom: 1em;
+    }
+    img {
+      max-width: 100%;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-light);
+      display: block;
+      margin: var(--spacing-base) 0;
+      object-fit: cover;
+    }
+    /* Utilities */
+    .container {
+      width: 90%;
+      max-width: var(--max-width);
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .flex {
+      display: flex;
+      gap: var(--spacing-base);
+    }
+    .flex-column {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-base);
+    }
+    .btn {
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 12px 24px;
+      border-radius: var(--border-radius);
+      border: none;
+      background: var(--color-primary);
+      color: white;
+      transition: background-color 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: var(--shadow-light);
+      user-select: none;
+    }
+    .btn:focus-visible {
+      outline: 3px solid var(--color-accent);
+      outline-offset: 2px;
+    }
+    .btn:hover {
+      background-color: var(--color-primary-light);
+      box-shadow: var(--shadow-hover);
+    }
+    .section {
+      padding: 48px 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .section:last-of-type {
+      border-bottom: none;
+    }
+    /* Header */
+    header {
+      background-color: var(--color-card-bg);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 24px;
+    }
+    .logo {
+      font-weight: 800;
+      font-size: 1.8rem;
+      color: var(--color-primary);
+      letter-spacing: 2px;
+      user-select: none;
+      font-family: 'Inter', sans-serif;
+    }
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+    .nav-links a {
+      font-weight: 600;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 8px 12px;
+      border-radius: var(--border-radius);
+      transition: background-color 0.3s ease;
+    }
+    .nav-links a:hover,
+    .nav-links a:focus {
+      background-color: var(--color-primary-light);
+      color: white;
+      outline: none;
+    }
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, #007a4d, #00a258);
+      color: white;
+      padding: 80px 24px 120px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: -150px;
+      right: -150px;
+      width: 300px;
+      height: 300px;
+      background: rgba(0, 122, 77, 0.2);
+      border-radius: 50%;
+      filter: blur(80px);
+      z-index: 0;
+      animation: pulse 6s infinite ease-in-out alternate;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 24px;
+      line-height: 1.1;
+      font-weight: 800;
+      user-select: none;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+    }
+    .hero p {
+      font-size: 1.25rem;
+      margin-bottom: 40px;
+      line-height: 1.6;
+      font-weight: 500;
+      filter: drop-shadow(0px 1px 1px rgba(0,0,0,0.2));
+    }
+    .hero .btn {
+      font-size: 1.2rem;
+      padding: 16px 36px;
+      box-shadow: 0 6px 20px rgba(0,122,77,0.35);
+    }
+    @keyframes pulse {
+      0% {
+        transform: scale(0.95);
+        opacity: 0.6;
+      }
+      100% {
+        transform: scale(1.15);
+        opacity: 0.4;
+      }
+    }
+    /* Main layout */
+    main {
+      flex-grow: 1;
+      background: var(--color-background);
+    }
+    /* Sections */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 32px;
+    }
+    .feature-card {
+      background: var(--color-card-bg);
+      border-radius: var(--border-radius);
+      padding: 24px 24px 36px;
+      box-shadow: var(--shadow-light);
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .feature-card:hover,
+    .feature-card:focus-within {
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-6px);
+      outline: none;
+    }
+    /* service image container */
+    .service-image {
+      width: 100%;
+      max-height: 180px;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow-light);
+    }
+    .service-image img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+      border-radius: var(--border-radius);
+    }
+    .feature-icon {
+      font-size: 48px;
+      color: var(--color-primary);
+      margin-bottom: 16px;
+      user-select: none;
+    }
+    .feature-title {
+      font-weight: 700;
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+      color: var(--color-text-primary);
+    }
+    .feature-description {
+      font-size: 1rem;
+      color: var(--color-text-secondary);
+    }
+    /* Blog content area */
+    .blog-section {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 var(--spacing-base);
+    }
+    article.blog-post {
+      background: var(--color-card-bg);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-light);
+      padding: 32px 36px;
+      margin-bottom: 48px;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      transition: box-shadow 0.3s ease;
+    }
+    article.blog-post:hover,
+    article.blog-post:focus-within {
+      box-shadow: var(--shadow-hover);
+      outline: none;
+    }
+    .blog-post h2 {
+      color: var(--color-primary);
+      margin-top: 0;
+      margin-bottom: 12px;
+      font-weight: 700;
+      font-size: 2rem;
+    }
+    .blog-post p, 
+    .blog-post ul, 
+    .blog-post ol {
+      font-size: 1rem;
+      color: var(--color-text-secondary);
+    }
+    .blog-post ul, .blog-post ol {
+      padding-left: 20px;
+      margin-bottom: 16px;
+    }
+    /* About, Feedback and Tips areas */
+    section.about, section.feedback, section.tips, section.disclaimer {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 var(--spacing-base);
+      text-align: center;
+    }
+    section.about h2,
+    section.feedback h2,
+    section.tips h2,
+    section.disclaimer h2 {
+      font-weight: 800;
+      margin-bottom: 24px;
+      color: var(--color-primary);
+      font-size: 2.25rem;
+    }
+    section.about p, section.disclaimer p {
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      color: var(--color-text-secondary);
+      font-size: 1.1rem;
+    }
+    .feedback-form {
+      max-width: 600px;
+      margin: 0 auto;
+      background: var(--color-card-bg);
+      box-shadow: var(--shadow-light);
+      border-radius: var(--border-radius);
+      padding: 24px;
+      text-align: left;
+    }
+    .feedback-form label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--color-text-primary);
+    }
+    .feedback-form input,
+    .feedback-form textarea {
+      width: 100%;
+      padding: 10px 12px;
+      margin-bottom: 16px;
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--border-radius);
+      font-size: 1rem;
+      resize: vertical;
+      transition: border-color 0.3s ease;
+    }
+    .feedback-form input:focus,
+    .feedback-form textarea:focus {
+      border-color: var(--color-primary);
+      outline: none;
+    }
+    .feedback-form button {
+      display: inline-block;
+      background: var(--color-primary);
+      color: white;
+      font-weight: 700;
+      padding: 12px 24px;
+      border-radius: var(--border-radius);
+      border: none;
+      cursor: pointer;
+      user-select: none;
+      transition: background-color 0.3s ease;
+    }
+    .feedback-form button:hover,
+    .feedback-form button:focus {
+      background: var(--color-primary-light);
+      outline: none;
+    }
+    .feedback-message {
+      padding: 8px 12px;
+      border-radius: var(--border-radius);
+      margin-top: 12px;
+      font-weight: 600;
+    }
+    .feedback-message.success {
+      background-color: #d1fae5;
+      color: #065f46;
+    }
+    .feedback-message.error {
+      background-color: #fee2e2;
+      color: #991b1b;
+    }
+    /* Disclaimer text styling */
+    .disclaimer {
+      font-size: 0.9rem;
+      color: var(--color-text-secondary);
+      margin-top: 24px;
+      line-height: 1.4;
+    }
+    /* Customer satisfaction banner */
+    .customer-satisfaction {
+      background: linear-gradient(90deg, #00a258, #007a4d);
+      color: white;
+      padding: 28px 24px;
+      text-align: center;
+      font-size: 1.3rem;
+      font-weight: 700;
+      border-radius: 0 0 var(--border-radius) var(--border-radius);
+      box-shadow: inset 0 0 12px rgba(255 255 255 / 0.25);
+      user-select: none;
+    }
+    /* Address footer */
+    footer.site-footer {
+      background: var(--color-card-bg);
+      padding: 24px;
+      text-align: center;
+      font-size: 1rem;
+      color: var(--color-text-secondary);
+      border-top: 1px solid var(--color-border);
+      user-select: none;
+    }
+    /* Responsive breakpoints */
+    @media (max-width: 767px) {
+      h1 {
+        font-size: 2.25rem;
+      }
+      h2 {
+        font-size: 1.75rem;
+      }
+      .hero {
+        padding: 48px 16px 96px;
+      }
+      nav {
+        flex-wrap: wrap;
+      }
+      .nav-links {
+        margin-top: 8px;
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .feature-card {
+        padding: 20px 16px 32px;
+      }
+      article.blog-post {
+        padding: 24px 20px;
+        margin-bottom: 36px;
+      }
+      img {
+        max-height: 250px;
+      }
+      .feedback-form {
+        padding: 16px;
+      }
+      .service-image {
+        max-height: 140px;
+      }
+    }
+    @media (min-width: 1024px) {
+      .hero {
+        padding: 100px 24px 140px;
+      }
+      nav {
+        padding: 16px 48px;
+      }
+      .blog-section {
+        padding: 0 48px;
+      }
+      .feedback-form {
+        padding: 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header role="banner" aria-label="Site header">
+    <nav role="navigation" aria-label="Primary navigation">
+      <div class="logo" tabindex="0">EarthWhisper</div>
+      <div class="nav-links">
+        <a href="index.html" tabindex="0"aria-current="page">Home</a>
+        <a href="privacy.html" tabindex="0">Privacy</a>
+        <a href="terms.html" tabindex="0">Terms & conditons</a>
+        <a href="cookies.html"tabindex="0">Cookies</a>
+        <a href="contact.html" tabindex="0">Contact us</a>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero" aria-label="Hero introduction section">
+    <div class="hero-content container">
+      <h1>EarthWhisper</h1>
+      <p>Your trusted irrigation consultant and informed blog dedicated to sustainable water management & smart irrigation solutions.</p>
+      <button class="btn" onclick="document.getElementById('feedback').scrollIntoView({behavior:'smooth'})" aria-label="Scroll to Feedback form">
+        Leave Feedback
+        <span class="material-icons" aria-hidden="true">feedback</span>
+      </button>
+    </div>
+  </section>
+
+  <main>
+    <!-- About Us -->
+    <section id="about" class="section about" tabindex="0" aria-labelledby="about-title">
+      <h2 id="about-title">About EarthWhisper</h2>
+      <p>
+        EarthWhisper brings expert irrigation consulting services and an enlightening blog for those passionate about effective, sustainable agriculture and gardening. 
+        With over <strong>60,000+ words</strong> of in-depth content, our platform offers expert advice, latest trends, and best practices for irrigation design, installation, and maintenance.
+      </p>
+      <p>
+        Our mission is to help farmers, gardeners, and water managers optimize water use, reduce waste, and promote eco-friendly irrigation. We combine years of consulting experience with a dedication to educating through detailed articles and interactive insights.
+      </p>
+      <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/542a67a3-dfc7-4684-9b4c-3942719314f0.png" alt="Irrigation consultant discussing irrigation system with farmers in a field under blue sky" loading="lazy" />
+    </section>
+
+    <!-- Features / Services -->
+    <section aria-label="Our Services" class="section container">
+      <h2>Our Services</h2>
+      <div class="features-grid">
+        <article class="feature-card" tabindex="0" aria-describedby="service1-desc">
+          <div class="service-image">
+            <img src="s1.png" alt="Professional irrigation design plan on paper with layout and measurements" loading="lazy" />
+          </div>
+          <span class="material-icons feature-icon" aria-hidden="true">water_drop</span>
+          <h3>Custom Irrigation Design</h3>
+          <p id="service1-desc">Tailored irrigation system plans that maximize efficiency for any farm or garden size.</p>
+        </article>
+        <article class="feature-card" tabindex="0" aria-describedby="service2-desc">
+          <div class="service-image">
+            <img src="s2.png" alt="An expert overseeing irrigation system installation outdoor" loading="lazy" />
+          </div>
+          <span class="material-icons feature-icon" aria-hidden="true">build_circle</span>
+          <h3>Installation Oversight</h3>
+          <p id="service2-desc">Expert supervision during irrigation system installation ensures quality and performance.</p>
+        </article>
+        <article class="feature-card" tabindex="0" aria-describedby="service3-desc">
+          <div class="service-image">
+            <img src="s3.png" alt="Technician performing irrigation system maintenance checks" loading="lazy" />
+          </div>
+          <span class="material-icons feature-icon" aria-hidden="true">settings_suggest</span>
+          <h3>Maintenance & Optimization</h3>
+          <p id="service3-desc">Regular system check-ups and adjustments to keep water use sustainable and effective.</p>
+        </article>
+        <article class="feature-card" tabindex="0" aria-describedby="service4-desc">
+          <div class="service-image">
+            <img src="s4.png" alt="Consultant advising about sustainable irrigation technologies" loading="lazy" />
+          </div>
+          <span class="material-icons feature-icon" aria-hidden="true">eco</span>
+          <h3>Sustainability Consulting</h3>
+          <p id="service4-desc">Guidance to implement eco-friendly and water-saving irrigation technologies.</p>
+        </article>
+        <article class="feature-card" tabindex="0" aria-describedby="service5-desc">
+          <div class="service-image">
+            <img src="s5.png" alt="Professional reviewing irrigation systems and auditing performance" loading="lazy" />
+          </div>
+          <span class="material-icons feature-icon" aria-hidden="true">fact_check</span>
+          <h3>Irrigation System Audits</h3>
+          <p id="service5-desc">Comprehensive evaluations of existing irrigation systems to identify improvements and ensure compliance with best practices.</p>
+        </article>
+        <article class="feature-card" tabindex="0" aria-describedby="service6-desc">
+          <div class="service-image">
+            <img src="s6.png" alt="Group attending water management and irrigation training session" loading="lazy" />
+          </div>
+          <span class="material-icons feature-icon" aria-hidden="true">school</span>
+          <h3>Water Management Training</h3>
+          <p id="service6-desc">Hands-on training sessions and workshops designed to educate farmers and managers on efficient irrigation and water conservation techniques.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Blog Content -->
+    <section id="blog" class="section blog-section" aria-label="Irrigation Blog Posts">
+      <h2 tabindex="0">Latest Blog Articles</h2>
+
+      <article class="blog-post" tabindex="0" aria-labelledby="post1-title">
+        <h2 id="post1-title">Smart Irrigation Technologies Transforming Agriculture</h2>
+        <p>Smart irrigation integrates modern technology and data-driven insights to improve water efficiency and crop yields. From soil moisture sensors to AI-powered drip irrigation, discover the innovations shaping the future of farming.</p>
+        <p>Implementing smart irrigation systems can reduce water waste by up to 30%, enhance productivity, and conserve natural resources effectively.</p>
+        <ul>
+          <li>Soil moisture monitoring technologies provide real-time data to adjust watering schedules precisely.</li>
+          <li>Automated valve controllers regulate water flow for maximum efficiency.</li>
+          <li>Mobile app irrigation scheduling allows farmers to control systems remotely.</li>
+          <li>Integration with weather forecasting optimizes irrigation based on environmental conditions.</li>
+        </ul>
+        <p>These innovations help farmers turn irrigation into a truly smart process, improving yields and reducing costs.</p>
+      </article>
+
+      <article class="blog-post" tabindex="0" aria-labelledby="post2-title">
+        <h2 id="post2-title">Efficient Water Practices for Home Gardens</h2>
+        <p>Water conservation starts at home. Learn how to maintain a healthy garden while using water wisely through drip irrigation, mulching, and planting drought-resistant species.</p>
+        <p>Installing an economical drip irrigation system yourself is easier than many think and can save substantial amounts of water annually.</p>
+        <p>Take advantage of smart watering timers and moisture sensors to keep plants hydrated without waste, especially during hot and dry seasons.</p>
+      </article>
+
+      <!-- Additional blog posts without images, enriched with text -->
+
+      <article class="blog-post" tabindex="0" aria-label="Water Management Tips">
+        <h2>Water Management Tips for Arid Regions</h2>
+        <p>Optimizing irrigation in dry areas is a challenge that can be addressed with a combination of modern techniques and traditional knowledge.</p>
+        <p>Water harvesting methods capture rainfall efficiently, providing supplementary water during droughts. Soil amendments such as adding organic matter improve moisture retention.</p>
+        <p>Crop rotation helps maintain soil health and moisture balance, promoting sustained plant growth in tough climates.</p>
+      </article>
+
+      <article class="blog-post" tabindex="0" aria-label="Seasonal Irrigation Scheduling">
+        <h2>Seasonal Irrigation Scheduling for Maximum Yield</h2>
+        <p>Adapting irrigation frequency and volume to the season and growth phase of crops maximizes yields and conserves water.</p>
+        <p>Seedlings often require more frequent moisture, while mature plants may thrive on reduced watering. Understanding local climate patterns helps optimize watering cycles.</p>
+        <p>Scheduling prevents overwatering and reduces the risk of disease or nutrient leaching.</p>
+      </article>
+
+      <article class="blog-post" tabindex="0" aria-label="Irrigation System Troubleshooting">
+        <h2>Troubleshooting Your Irrigation System</h2>
+        <p>Regularly inspect your irrigation setup to quickly fix leaks, clogs, and uneven water distribution.</p>
+        <p>Common issues include sediment buildup blocking emitters, cracked or damaged pipes, and incorrect pressure settings that reduce system efficiency.</p>
+        <p>Implementing a monthly maintenance checklist can significantly extend system longevity and performance.</p>
+      </article>
+
+      <article class="blog-post" tabindex="0" aria-label="Benefits of Drip Irrigation">
+        <h2>Benefits of Drip Irrigation in Water-Scarce Areas</h2>
+        <p>Drip irrigation delivers water directly to the plant roots, minimizing evaporation and runoff common in other irrigation methods.</p>
+        <p>This precision watering improves plant health and reduces water consumption, making it the perfect choice for arid or drought-prone zones.</p>
+        <p>Additionally, drip systems are customizable and scalable, from small gardens to large farms.</p>
+      </article>
+
+      <article class="blog-post" tabindex="0" aria-label="Rainwater Harvesting and Irrigation">
+        <h2>Integrating Rainwater Harvesting with Irrigation Systems</h2>
+        <p>Collecting rainwater provides an alternative water source that reduces dependency on municipal or well water.</p>
+        <p>Connecting storage tanks to irrigation systems allows for sustainable watering, especially in periods of low rainfall.</p>
+        <p>Design considerations include filtration, storage capacity, and pumping systems for efficient usage.</p>
+      </article>
+
+      <article class="blog-post" tabindex="0" aria-label="Irrigation System Innovations">
+        <h2>Innovations in Smart Irrigation Control</h2>
+        <p>Emerging technologies such as Internet of Things (IoT) sensors and AI analytics enable responsive irrigation adjusting to real-time conditions.</p>
+        <p>These systems empower users by providing detailed insights and automatic adjustments to save water and increase productivity with minimal manual input.</p>
+        <p>The future of irrigation is data-driven and highly efficient.</p>
+      </article>
+
+      <article class="blog-post" tabindex="0" aria-label="Grass Lawn Irrigation Tips">
+        <h2>Watering Lawn Grass Efficiently</h2>
+        <p>Lawn watering precision preserves lush green color while reducing waste.</p>
+        <p>Use smart timer systems and soil moisture sensors to avoid watering during rain or high humidity.</p>
+        <p>Water deeply but infrequently to develop strong root systems and drought resilience.</p>
+      </article>
+
+    </section>
+
+    <!-- Tips Section -->
+    <section id="tips" class="section tips" aria-label="Irrigation Tips">
+      <h2 tabindex="0">Quick Irrigation Tips</h2>
+      <ul>
+        <li>Check your irrigation system frequently for leaks and clogs.</li>
+        <li>Water plants early morning or late evening to reduce evaporation.</li>
+        <li>Use mulch to retain soil moisture and reduce watering frequency.</li>
+        <li>Install soil moisture sensors to automate watering schedules.</li>
+        <li>Adapt irrigation amounts based on seasonal weather changes.</li>
+        <li>Consider drip irrigation for precise water delivery and conservation.</li>
+      </ul>
+      <img src="p2.png" alt="Close-up of soil with healthy plants and irrigation dripping system" />
+    </section>
+
+    <!-- Feedback Form -->
+    <section id="feedback" class="section feedback" aria-label="Customer Feedback and Contact Form" tabindex="0">
+      <h2>We Value Your Feedback</h2>
+      <form class="feedback-form" id="feedback-form" novalidate aria-describedby="feedback-desc" aria-live="polite">
+        <p id="feedback-desc">Help us improve by sending your comments or questions below.</p>
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Your full name" required aria-required="true" />
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Your email address" required aria-required="true" />
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="6" placeholder="Your feedback or inquiry" required aria-required="true"></textarea>
+        <button type="submit" class="btn" aria-label="Submit feedback form">Submit</button>
+        <div id="form-message" role="alert" aria-live="assertive" class="feedback-message" style="display:none;"></div>
+      </form>
+    </section>
+
+    <!-- Disclaimer Section -->
+    <section id="disclaimer" class="section disclaimer" aria-label="Disclaimer Section" tabindex="0">
+      <h2>Disclaimer</h2>
+      <p>
+        The information provided on EarthWhisper is for educational and informational purposes only. While we strive to keep content accurate and up-to-date,
+        we make no warranties or guarantees regarding the completeness, reliability, or suitability of the information for your specific needs. 
+        Always consult with a professional irrigation consultant or local authority before implementing irrigation systems or making water management decisions.
+      </p>
+    </section>
+  </main>
+
+  <div class="customer-satisfaction" aria-live="polite" aria-atomic="true" role="region" tabindex="0">
+    Increasing Customer Satisfaction Through Expert, Responsive Irrigation Consulting & Quality Content
+  </div>
+
+  <footer class="site-footer" role="contentinfo" aria-label="Footer with contact information and address">
+    <p>EarthWhisper Irrigation Consulting Services</p>
+    <address>
+      310 3rd Ave, New York, NY 10010, USA
+    </address>
+  </footer>
+
+  <script>
+    // Simple feedback form validation and user message display
+    (function() {
+      const form = document.getElementById('feedback-form');
+      const messageDiv = document.getElementById('form-message');
+
+      form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        messageDiv.style.display = 'none';
+        messageDiv.textContent = '';
+        messageDiv.className = 'feedback-message';
+
+        if(!form.checkValidity()) {
+          messageDiv.textContent = 'Please fill out all required fields correctly.';
+          messageDiv.classList.add('error');
+          messageDiv.style.display = 'block';
+          form.querySelector(':invalid').focus();
+          return;
+        }
+
+        // Simulate async submission and success message
+        setTimeout(() => {
+          messageDiv.textContent = 'Thank you for your feedback! We appreciate your time.';
+          messageDiv.classList.add('success');
+          messageDiv.style.display = 'block';
+          form.reset();
+          form.querySelector('input').focus();
+        }, 700);
+      });
+    })();
+  </script>
+</body>
+</html>
+
+

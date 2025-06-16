@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EarthWhisper - Cookies Policy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <style>
+    :root {
+      --color-primary: #007a4d;
+      --color-primary-light: #00a258;
+      --color-background: #f8faf7;
+      --color-text-primary: #1f2937;
+      --color-text-secondary: #4b5563;
+      --color-card-bg: #ffffff;
+      --color-border: #d1d5db;
+      --border-radius: 12px;
+      --shadow-light: 0 4px 10px rgba(0, 122, 77, 0.1);
+      --shadow-hover: 0 8px 20px rgba(0, 122, 77, 0.15);
+      --max-width: 1200px;
+      --spacing-base: 16px;
+      --font-family: 'Inter', sans-serif;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: var(--font-family);
+      background: var(--color-background);
+      color: var(--color-text-primary);
+      line-height: 1.7;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      scroll-behavior: smooth;
+    }
+    a {
+      color: var(--color-primary);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover,
+    a:focus {
+      color: var(--color-primary-light);
+      outline: none;
+      text-decoration: underline;
+    }
+    h1, h2, h3 {
+      color: var(--color-primary);
+      font-weight: 700;
+      margin-bottom: 0.75em;
+    }
+    h1 {
+      font-size: 3rem;
+      margin-top: 0;
+    }
+    h2 {
+      font-size: 2.25rem;
+      margin-top: 3em;
+    }
+    h3 {
+      font-size: 1.5rem;
+      margin-top: 2em;
+    }
+    p {
+      color: var(--color-text-secondary);
+      margin-top: 0;
+      margin-bottom: 1.3em;
+      font-size: 1.05rem;
+      text-align: justify;
+    }
+    ul {
+      list-style-type: disc;
+      padding-left: 1.75rem;
+      margin-bottom: 1.5rem;
+      color: var(--color-text-secondary);
+    }
+    .container {
+      max-width: var(--max-width);
+      width: 90%;
+      margin: 0 auto;
+      padding: 2rem 0 6rem;
+      background: var(--color-card-bg);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-light);
+    }
+    header {
+      background-color: var(--color-card-bg);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      font-weight: 700;
+      font-size: 1rem;
+    }
+    .logo {
+      color: var(--color-primary);
+      font-size: 1.8rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      font-family: var(--font-family);
+      user-select: none;
+    }
+    .nav-links a {
+      margin-left: 1rem;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      padding: 0.4rem 0.7rem;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+    .nav-links a:hover,
+    .nav-links a:focus,
+    .nav-links a[aria-current="page"] {
+      background-color: var(--color-primary-light);
+      color: white;
+      text-decoration: none;
+      outline: none;
+    }
+    /* Hero section */
+    .hero {
+      background: linear-gradient(135deg, #007a4d, #00a258);
+      text-align: center;
+      color: white;
+      padding: 4rem 1.5rem 6rem;
+      user-select: none;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -140px;
+      right: -140px;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: rgba(0, 122, 77, 0.15);
+      filter: blur(80px);
+      animation: pulse 6s ease-in-out infinite alternate;
+      z-index: 0;
+    }
+    .hero-content {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+      z-index: 1;
+    }
+    .hero h1 {
+      font-size: 3.75rem;
+      font-weight: 900;
+      margin-bottom: 1rem;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+      line-height: 1.1;
+    }
+    .hero p {
+      font-size: 1.3rem;
+      font-weight: 600;
+      max-width: 600px;
+      margin: 0 auto;
+      filter: drop-shadow(0px 1px 1px rgba(0,0,0,0.25));
+      line-height: 1.5;
+    }
+    @keyframes pulse {
+      0%{transform: scale(0.95);opacity: 0.6;}
+      100%{transform: scale(1.15);opacity: 0.4;}
+    }
+    /* Footer */
+    footer.site-footer {
+      background-color: var(--color-card-bg);
+      border-top: 1px solid var(--color-border);
+      color: var(--color-text-secondary);
+      padding: 1.5rem 2rem;
+      font-size: 1rem;
+      text-align: center;
+      user-select: none;
+    }
+    /* Cookie consent banner */
+    #cookie-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--color-primary);
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1100;
+      font-size: 1rem;
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.2);
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    #cookie-banner p {
+      margin: 0;
+      flex: 1;
+      min-width: 220px;
+    }
+    #cookie-banner button {
+      background: white;
+      color: var(--color-primary);
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      min-width: 100px;
+      user-select: none;
+    }
+    #cookie-banner button:hover,
+    #cookie-banner button:focus {
+      background-color: var(--color-primary-light);
+      color: white;
+      outline: none;
+    }
+    #cookie-banner #decline-btn {
+      background: transparent;
+      border: 2px solid white;
+      color: white;
+    }
+    #cookie-banner #decline-btn:hover,
+    #cookie-banner #decline-btn:focus {
+      background-color: white;
+      color: var(--color-primary);
+    }
+    /* Responsive */
+    @media (max-width: 767px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      .hero p {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header role="banner" aria-label="Site header">
+    <nav role="navigation" aria-label="Primary navigation">
+      <div class="logo" tabindex="0"><a href="index.html" style="color: var(--color-primary); text-decoration: none;">EarthWhisper</a></div>
+      <div class="nav-links">
+     <a href="index.html" tabindex="0">Home</a>
+        <a href="privacy.html" tabindex="0">Privacy</a>
+        <a href="terms.html" tabindex="0">Terms & conditons</a>
+        <a href="cookies.html"tabindex="0"aria-current="page">Cookies</a>
+        <a href="contact.html" tabindex="0">Contact us</a>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero" aria-label="Cookies policy introduction">
+    <div class="hero-content container">
+      <h1>Cookies Policy</h1>
+      <p>This page details EarthWhisper's use of cookies and provides a comprehensive explanation of their functions, types, and your options for managing them, ensuring full transparency and control over your online experience.</p>
+    </div>
+  </section>
+
+  <main>
+    <section class="container" aria-label="Detailed Cookies Policy Points" tabindex="0">
+      <h2>30 Detailed Points About Cookies</h2>
+      <p>This section offers a comprehensive explanation of various aspects related to cookie usage on our website to help you understand how cookies affect your browsing and data privacy.</p>
+
+      <ol style="list-style-type: none; counter-reset: none; padding-left: 0;">
+        <li>
+          <h3>What Are Cookies?</h3>
+          <p>Cookies are small files that websites place on your device to store information about your preferences and interactions. They help improve user experience by remembering login details, language preferences, and site navigation behavior, making your visits more efficient and personalized.</p>
+        </li>
+        <li>
+          <h3>Types of Cookies We Use</h3>
+          <p>Our website uses several types of cookies including strictly necessary cookies, performance analytics cookies, preference cookies, and marketing cookies. Each serves a unique function, from enabling website access to measuring site traffic and personalizing advertising.</p>
+        </li>
+        <li>
+          <h3>Strictly Necessary Cookies</h3>
+          <p>These cookies are essential for basic website functions and security. Without them, the site cannot function properly, and these include session identifiers and load balancing cookies that maintain the website's stability and user session continuity.</p>
+        </li>
+        <li>
+          <h3>Performance and Analytics Cookies</h3>
+          <p>We utilize performance cookies to gather anonymized insights into how users interact with our site, allowing us to identify popular content, navigation issues, and opportunities to improve overall user satisfaction and performance.</p>
+        </li>
+        <li>
+          <h3>Preference Cookies</h3>
+          <p>Preference cookies capture choices you make on our site, such as language or region, and help maintain these settings across visits. This ensures that your experience feels consistent and tailored to your needs.</p>
+        </li>
+        <li>
+          <h3>Marketing Cookies and Targeted Advertising</h3>
+          <p>Marketing cookies track your browsing activity across websites to deliver more relevant advertising. They help identify trends and measure promotional effectiveness while ensuring ads are aligned with your interests.</p>
+        </li>
+        <li>
+          <h3>Third-Party Cookies</h3>
+          <p>Sometimes, third-party services such as social media or analytics providers place cookies on our site. These cookies are governed by the third parties' privacy policies. We strive to work only with trusted partners who adhere to data protection standards.</p>
+        </li>
+        <li>
+          <h3>How We Use Cookies</h3>
+          <p>Cookies enable us to enhance site usability, remember your preferences, analyze traffic, and provide personalized marketing. They are vital to delivering a seamless and customized user experience that respects your privacy choices.</p>
+        </li>
+        <li>
+          <h3>Managing Cookie Preferences</h3>
+          <p>You can manage your cookie settings anytime through the consent banner on our site or your web browser settings. This includes accepting or rejecting non-essential cookies to control the information shared during browsing.</p>
+        </li>
+        <li>
+          <h3>Disabling Cookies</h3>
+          <p>Disabling cookies in your browser settings may restrict certain website features or personalized services, and may require you to manually re-enter preferences on subsequent visits.</p>
+        </li>
+        <li>
+          <h3>Cookie Consent and Legal Compliance</h3>
+          <p>EarthWhisper complies with GDPR and other privacy regulations by obtaining user consent for non-essential cookies. We offer transparent explanations and options to accept or decline cookies before placing them.</p>
+        </li>
+        <li>
+          <h3>The Purpose of Our Cookie Consent Banner</h3>
+          <p>This banner informs you about our cookie practices on first visit and lets you make an informed choice regarding acceptance or rejection of cookies, enhancing control over your data privacy.</p>
+        </li>
+        <li>
+          <h3>Duration of Cookies</h3>
+          <p>Cookies may be session-based, discarded after closing your browser, or persistent, stored for extended periods. Persistence periods vary depending on the cookie’s purpose, ranging from minutes to years.</p>
+        </li>
+        <li>
+          <h3>Cookies and Website Performance</h3>
+          <p>Cookies contribute to faster load times and stable connections by caching information, allowing the website to quickly retrieve data creating smoother browsing.</p>
+        </li>
+        <li>
+          <h3>Cookies and Security</h3>
+          <p>Cookies are passive files that cannot execute code but can store sensitive information. We ensure cookie data is transmitted securely over HTTPS and restrict access to authorized personnel only.</p>
+        </li>
+        <li>
+          <h3>Cookies' Role in User Accounts</h3>
+          <p>Cookies remember login sessions and user preferences, making it easier for users to navigate our site without repeated authentications while maintaining secure session management.</p>
+        </li>
+        <li>
+          <h3>Analytics Providers and Cookie Data</h3>
+          <p>We partner with reputable analytics services such as Google Analytics to monitor usage trends. Data collected is anonymized to protect your identity while providing insights to improve the website.</p>
+        </li>
+        <li>
+          <h3>Policy Updates</h3>
+          <p>Our cookie policy is regularly reviewed to reflect changes in technology and privacy laws. Updates will be posted here with the effective date to ensure you remain informed of our practices.</p>
+        </li>
+        <li>
+          <h3>Cookies and Advertising Networks</h3>
+          <p>Advertising cookies are set by networks to help display relevant ads and understand their effectiveness. Data gathered through these cookies is aggregated and helps us and partners serve targeted offers.</p>
+        </li>
+        <li>
+          <h3>Benefits of Allowing Cookies</h3>
+          <p>When you accept cookies, you enable tailored experiences on EarthWhisper, faster navigation, and relevant content. Cookies help us remember your choices and preferences to serve you better.</p>
+        </li>
+        <li>
+          <h3>Consequences of Disabling Cookies</h3>
+          <p>Blocking or deleting cookies may prevent certain features from working properly, such as remaining logged in, saving preferences, or receiving personalized content, potentially decreasing user convenience.</p>
+        </li>
+        <li>
+          <h3>Browser-Specific Cookie Management</h3>
+          <p>Each browser has unique procedures for managing and blocking cookies. We recommend consulting your browser’s help resources to customize cookie settings according to your privacy preferences.</p>
+        </li>
+        <li>
+          <h3>Mobile Device Cookie Settings</h3>
+          <p>Mobile browsers use cookies similarly to desktop versions. Cookie preferences can be adjusted via your device’s browser settings, allowing you control over data on-the-go.</p>
+        </li>
+        <li>
+          <h3>Protection of Cookie Data</h3>
+          <p>All cookie data we collect is handled with rigorous security measures ensuring encryption and restricted access to prevent unauthorized use or exposure.</p>
+        </li>
+        <li>
+          <h3>Opting Out of Cookies</h3>
+          <p>You can opt out from cookies either through our banner or via third-party tools that disable tracking cookies across multiple sites. Your browsing experience will be adjusted accordingly.</p>
+        </li>
+        <li>
+          <h3>Clearing Cookies From Your Browser</h3>
+          <p>Clearing cookies periodically helps manage your privacy preferences. This can be done manually using browser settings or system tools, which can remove stored cookies and site data.</p>
+        </li>
+        <li>
+          <h3>Difference Between Session and Persistent Cookies</h3>
+          <p>Session cookies are temporary and deleted after you close the browser, while persistent cookies remain to remember your settings and preferences between visits over time for convenience.</p>
+        </li>
+        <li>
+          <h3>Privacy Concerns Regarding Cookies</h3>
+          <p>We recognize that cookies can raise privacy concerns. Our policy minimizes data collection, seeks consent, and respects your choices to provide transparent control over personal information.</p>
+        </li>
+        <li>
+          <h3>Functional Cookies for Website Features</h3>
+          <p>Functional cookies enable key features such as shopping carts, form inputs, and secure areas of the site, allowing a smooth user experience tailored to your needs.</p>
+        </li>
+        <li>
+          <h3>Contact Regarding Cookie Questions</h3>
+          <p>For any questions or concerns about our use of cookies or your rights, contact privacy@earthwhisper.com. We are committed to assisting you and safeguarding your data privacy.</p>
+        </li>
+      </ol>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo" aria-label="Footer with contact information and address">
+    <p>EarthWhisper Irrigation Consulting Services</p>
+    <address>
+      310 3rd Ave, New York, NY 10010, USA<br />
+      Phone: +1 (555) 123-4567
+    </address>
+  </footer>
+
+  <div id="cookie-banner" role="region" aria-live="polite" aria-label="Cookie consent banner" tabindex="0" hidden>
+    <p>We use cookies to enhance your experience, analyze site usage, and offer personalized content. You can accept or decline cookies. <a href="privacy.html" style="text-decoration: underline; color: white;">Learn more</a>.</p>
+    <button id="accept-btn" aria-label="Accept cookies">Accept</button>
+    <button id="decline-btn" aria-label="Decline cookies">Decline</button>
+  </div>
+
+  <script>
+    (() => {
+      const cookieBanner = document.getElementById('cookie-banner');
+      const acceptBtn = document.getElementById('accept-btn');
+      const declineBtn = document.getElementById('decline-btn');
+      const cookieConsentKey = 'earthwhisper_cookie_consent';
+
+      function setCookieConsent(value) {
+        localStorage.setItem(cookieConsentKey, value);
+      }
+
+      function getCookieConsent() {
+        return localStorage.getItem(cookieConsentKey);
+      }
+
+      function showCookieBanner() {
+        cookieBanner.hidden = false;
+        cookieBanner.focus();
+      }
+
+      function hideCookieBanner() {
+        cookieBanner.hidden = true;
+      }
+
+      window.addEventListener('load', () => {
+        const consent = getCookieConsent();
+        if (consent === null) {
+          showCookieBanner();
+        }
+      });
+
+      acceptBtn.addEventListener('click', () => {
+        setCookieConsent('accepted');
+        hideCookieBanner();
+      });
+
+      declineBtn.addEventListener('click', () => {
+        setCookieConsent('declined');
+        hideCookieBanner();
+      });
+    })();
+  </script>
+</body>
+</html>
