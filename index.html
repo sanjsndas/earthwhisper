@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script defer data-domain="earthwhisper.vercel.app" src="https://plausible.io/js/script.js"></script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>EarthWhisper - Irrigation Consultant & Blog</title>
@@ -30,16 +29,7 @@
     *, *::before, *::after {
       box-sizing: border-box;
     }
-   
-
-
-
-
-     body {
-     
-
-
-    
+    body {
       margin: 0;
       font-family: var(--font-family);
       background: var(--color-background);
@@ -507,20 +497,24 @@
 <body>
   <header role="banner" aria-label="Site header">
     <nav role="navigation" aria-label="Primary navigation">
-     
+      <div class="logo" tabindex="0">EarthWhisper</div>
       <div class="nav-links">
-      
+        <a href="index.html" tabindex="0"aria-current="page">Home</a>
+        <a href="privacy.html" tabindex="0">Privacy</a>
+        <a href="terms.html" tabindex="0">Terms & conditons</a>
+        <a href="cookies.html"tabindex="0">Cookies</a>
+        <a href="contact.html" tabindex="0">Contact us</a>
       </div>
     </nav>
   </header>
 
   <section class="hero" aria-label="Hero introduction section">
     <div class="hero-content container">
-     
-    
-     
-        
-     
+      <h1>EarthWhisper</h1>
+      <p>Your trusted irrigation consultant and informed blog dedicated to sustainable water management & smart irrigation solutions.</p>
+      <button class="btn" onclick="document.getElementById('feedback').scrollIntoView({behavior:'smooth'})" aria-label="Scroll to Feedback form">
+        Leave Feedback
+        <span class="material-icons" aria-hidden="true">feedback</span>
       </button>
     </div>
   </section>
@@ -712,16 +706,6 @@
     </section>
   </main>
 
-
-
-
-
-
-  
-
-
-
-  
   <div class="customer-satisfaction" aria-live="polite" aria-atomic="true" role="region" tabindex="0">
     Increasing Customer Satisfaction Through Expert, Responsive Irrigation Consulting & Quality Content
   </div>
